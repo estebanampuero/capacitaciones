@@ -17,7 +17,6 @@
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc; /* slate-50 */
             color: #0f172a; /* slate-900 */
-            overflow-x: hidden;
         }
         h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
         .gradient-text {
@@ -26,33 +25,18 @@
             background-clip: text; text-fill-color: transparent;
         }
 
-        /* --- Lienzo para Partículas Interactivas --- */
-        #particles-js {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -1;
-        }
+        #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 
-        /* --- Animaciones y Efectos --- */
         @keyframes slide-in-fade {
             from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); }
         }
-        .animate-on-scroll {
-            animation: slide-in-fade 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-            animation-play-state: paused;
-        }
+        .animate-on-scroll { animation: slide-in-fade 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both; animation-play-state: paused; }
         .animate-on-scroll.is-visible { animation-play-state: running; }
 
-        /* --- Acordeón Interactivo --- */
-        .course-item-content {
-            max-height: 0; overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+        .course-item-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .course-item-chevron { transition: transform 0.3s ease; }
         .course-item.is-open .course-item-chevron { transform: rotate(90deg); }
 
-        /* --- Borde Gradiente --- */
         .gradient-border-card { position: relative; background-color: white; z-index: 1; }
         .gradient-border-card::before {
             content: ""; position: absolute; top: -1px; left: -1px; right: -1px; bottom: -1px;
@@ -61,12 +45,7 @@
         }
         .gradient-border-card:hover::before { opacity: 1; }
 
-        /* --- Formas para Parallax --- */
-        .parallax-shape {
-            position: absolute;
-            z-index: -1;
-            transition: transform 0.2s ease-out;
-        }
+        .parallax-shape { position: absolute; z-index: -1; transition: transform 0.2s ease-out; }
     </style>
 </head>
 <body class="antialiased relative">
@@ -74,7 +53,8 @@
     <div id="particles-js"></div>
 
     <!-- Contenedor principal que se sienta sobre las partículas -->
-    <div class="relative z-10">
+    <!-- LA CORRECCIÓN SE APLICA AQUÍ, AÑADIENDO "overflow-hidden" -->
+    <div class="relative z-10 overflow-hidden">
         <!-- ===== HEADER FIJO CON EFECTO GLASSMORPHISM ===== -->
         <header id="main-header" class="w-full bg-white/80 backdrop-blur-xl z-50 sticky top-0 border-b border-slate-900/10 transition-shadow duration-300">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -247,7 +227,7 @@
                             <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-500 mr-3 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Kit de materiales digitales completos.</li>
                             <li class="flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-teal-500 mr-3 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Constancia de participación.</li>
                         </ul>
-                        <a href="https://www.flow.cl/btn.php?token=z0cb396c9869bf17573b59d91af8ff8ed1e66f71" target="_blank" class="mt-10 block w-full bg-indigo-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-indigo-500/30">
+                        <a href="URL_DE_PAGO_YOINN_AQUI" target="_blank" class="mt-10 block w-full bg-indigo-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-indigo-500/30">
                             Reservar Cupo Ahora
                         </a>
                     </div>
@@ -274,21 +254,18 @@
             fpsLimit: 60,
             interactivity: {
                 events: {
-                    onHover: { enable: true, mode: "grab" }, // Modo "grab" para efecto magnético
+                    onHover: { enable: true, mode: "grab" },
                     resize: true,
                 },
                 modes: {
                     grab: {
-                        distance: 150, // Distancia de atracción
-                        links: {
-                            opacity: 0.5,
-                            color: "#a5b4fc" // Color de las líneas de conexión
-                        }
+                        distance: 150,
+                        links: { opacity: 0.5, color: "#a5b4fc" }
                     }
                 },
             },
             particles: {
-                color: { value: "#a5b4fc" }, // indigo-200
+                color: { value: "#a5b4fc" },
                 links: { color: "#d1d5db", distance: 150, enable: true, opacity: 0.4, width: 1 },
                 move: {
                     direction: "none", enable: true, outModes: { default: "bounce" },
